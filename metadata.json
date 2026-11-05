@@ -1,0 +1,6 @@
+{
+  "name": "ELEVAR - Centro Terapêutico",
+  "description": "Landing page institucional e de alta conversão para clínica de psicologia e psicoterapia acolhedora.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

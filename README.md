@@ -1,11 +1,30 @@
-<div align="center">
+# Publicação Automática no GitHub Pages
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+Este repositório está configurado para publicação automática e estática no **GitHub Pages** utilizando **GitHub Actions**.
 
-  <h1>Built with AI Studio</h2>
+## 🚀 Como ativar a publicação no GitHub
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+Quando sincronizar este repositório com a sua conta do GitHub:
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+1. Acesse o seu repositório no GitHub.
+2. Vá em **Settings** (Configurações) > **Pages** (no menu lateral esquerdo).
+3. Na seção **Build and deployment** > **Source**, alterne de *Deploy from a branch* para:
+   👉 **GitHub Actions**
+4. Pronto! O workflow configurado em `.github/workflows/deploy.yml` será acionado automaticamente a cada `git push` nas branches `main` ou `master`, além de poder ser executado manualmente via **Run workflow** na aba *Actions*.
 
-</div>
+---
+
+## ⚙️ Recursos técnicos configurados
+
+- **GitHub Actions oficial**:
+  - `actions/checkout@v4`
+  - `actions/setup-node@v4` com cache de dependências
+  - `actions/configure-pages@v5`
+  - `actions/upload-pages-artifact@v3`
+  - `actions/deploy-pages@v4`
+- **Permissões necessárias**: `contents: read`, `pages: write`, `id-token: write`.
+- **Prevenção de conflitos**: `concurrency: pages` para evitar sobreposição de deploys.
+- **Ambiente GitHub Pages**: Registro automático da URL publicada nas execuções do workflow.
+- **Caminhos relativos universais**: `base: process.env.BASE_PATH || './'` no `vite.config.ts`, permitindo que o site funcione sem alterações em qualquer nome de repositório (`https://usuario.github.io/nome-do-repo/`) ou domínio customizado.
+- **Fallback SPA (`404.html`)**: Cópia automática do `index.html` gerada durante o build para garantir compatibilidade com rotas do cliente.
+- **Arquivo `.nojekyll`**: Desativa o processamento Jekyll do GitHub Pages para garantir integridade de todos os assets estáticos.
